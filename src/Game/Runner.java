@@ -1,6 +1,7 @@
 package Game;
 
 import People.Person;
+import Rooms.DeathRoom;
 import Rooms.Room;
 import Rooms.WinningRoom;
 
@@ -28,7 +29,34 @@ public class Runner {
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
 		building[x][y] = new WinningRoom(x, y);
-		 
+		System.out.println("Winning room #");
+		System.out.println(x);
+		System.out.println(y);
+
+		//Creates a random death room.
+		int a = (int)(Math.random()*building.length);
+		int b = (int)(Math.random()*building.length);
+		building[a][b] = new DeathRoom(a,b);
+		System.out.println("Losing room #");
+		System.out.println(a);
+		System.out.println(b);
+
+		//If the winning room and the losing room are the same, it will try to make a new winning room.
+		if(building[x][y] == building[a][b])
+		{
+			x = (int)(Math.random()*building.length);
+			y = (int)(Math.random()*building.length);
+			building[x][y] = new WinningRoom(x, y);
+		}
+
+		//Makes sure that death room cannot bhe the starting room.
+		if(building[a][b] == building[0][0])
+		{
+			a = (int)(Math.random()*building.length);
+			b = (int)(Math.random()*building.length);
+			building[a][b] = new DeathRoom(a,b);
+		}
+
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0);
 		building[0][0].enterRoom(player1);
