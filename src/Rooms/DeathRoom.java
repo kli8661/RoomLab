@@ -5,9 +5,7 @@ import People.Person;
 
 public class DeathRoom extends Room{
 
-    private int a;
-    private int b;
-
+    //New constructor for the 2 coordinates a and b for the death room instead of x and y.
     public DeathRoom(int a, int b) {
         super(a, b);
     }

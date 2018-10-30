@@ -29,17 +29,11 @@ public class Runner {
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
 		building[x][y] = new WinningRoom(x, y);
-		System.out.println("Winning room #");
-		System.out.println(x);
-		System.out.println(y);
 
 		//Creates a random death room.
 		int a = (int)(Math.random()*building.length);
 		int b = (int)(Math.random()*building.length);
 		building[a][b] = new DeathRoom(a,b);
-		System.out.println("Losing room #");
-		System.out.println(a);
-		System.out.println(b);
 
 		//If the winning room and the losing room are the same, it will try to make a new winning room.
 		if(building[x][y] == building[a][b])
@@ -57,7 +51,7 @@ public class Runner {
 			building[a][b] = new DeathRoom(a,b);
 		}
 
-		 //Setup player 1 and the input scanner
+		//Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0);
 		building[0][0].enterRoom(player1);
 		Scanner in = new Scanner(System.in);
@@ -84,9 +78,9 @@ public class Runner {
 	 * @param move the move chosen
 	 * @param p person moving
 	 * @param map the 2D array of rooms
-	 * @return
+	 * @return true or false depending if user made a valid move or not then will tell them to keep moving or make a new valid move.
 	 */
-	public static boolean validMove(String move, Person p, Room[][] map)
+	private static boolean validMove(String move, Person p, Room[][] map)
 	{
 		move = move.toLowerCase().trim();
 		switch (move) {
